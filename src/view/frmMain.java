@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import java.awt.Canvas;
 import java.awt.Button;
@@ -33,9 +34,9 @@ import javax.swing.DefaultComboBoxModel;
 
 public class frmMain extends JFrame {
 
-	Connection con = null;
-	PreparedStatement pst = null;
-	ResultSet rs = null;
+	Connection connect;
+	PreparedStatement pst;
+	ResultSet rs;
 	
 	
 	private JPanel contentPane;
@@ -380,7 +381,12 @@ public class frmMain extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				btnProjectCreate.setBackground(new Color(47, 39, 76));
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				createProject();
+			}
 		});
+		
 		btnProjectCreate.setLayout(null);
 		btnProjectCreate.setBackground(new Color(47, 39, 76));
 		btnProjectCreate.setBounds(104, 470, 140, 50);
@@ -836,7 +842,7 @@ public class frmMain extends JFrame {
 		
 		
 		setLocationRelativeTo(null);
-		con = DbConnect.dbconnect();
+		connect = DbConnect.dbconnect();
 	}
 	
 	private void pressedBtn(JPanel pane) {
@@ -861,5 +867,24 @@ public class frmMain extends JFrame {
 		layeredPane.add(panel);
 		layeredPane.repaint();
 		layeredPane.revalidate();
+	}
+	
+	public void createProject() {
+		
+		String sql = "Insert into projects(name,duration,budget,timecontingencybudget,costcontingencybudget) values(?,?,?,?,?)";
+		
+		try {
+			pst = connect.prepareStatement(sql);
+			pst.setString(1, txtProjectName.getText());
+			pst.setDouble(2, Double.parseDouble(txtProjectDuration.getText()));
+			pst.setDouble(3, Double.parseDouble(txtProjectBudget.getText()));
+			pst.setDouble(4, Double.parseDouble(txtProjectTimeBudget.getText()));
+			pst.setDouble(5, Double.parseDouble(txtProjectCostBudget.getText()));
+			
+			pst.execute();
+		}
+		catch (SQLException error) {
+			JOptionPane.showMessageDialog(null, error);
+		}
 	}
 }
