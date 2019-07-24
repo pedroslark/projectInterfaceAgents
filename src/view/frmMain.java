@@ -25,6 +25,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLayeredPane;
+import java.awt.CardLayout;
 
 public class frmMain extends JFrame {
 
@@ -33,6 +35,12 @@ public class frmMain extends JFrame {
 	ResultSet rs = null;
 	
 	private JPanel contentPane;
+	private JPanel scenariosPanel;
+	private JPanel employeesPanel;
+	private JPanel risksPanel;
+	private JPanel activitiesPanel;
+	private JPanel projectsPanel;
+	private JLayeredPane layeredPane;
 
 	public static void main(String[] args) {
 		
@@ -105,6 +113,7 @@ public class frmMain extends JFrame {
 		btn_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				switchPanels(projectsPanel);
 				pressedBtn(btn_1);
 				ind_1.setOpaque(true);
 				unpressedBtn(new JPanel[]{btn_2,btn_3,btn_4,btn_5}, new JPanel[]{ind_2,ind_3,ind_4,ind_5});
@@ -130,6 +139,7 @@ public class frmMain extends JFrame {
 		btn_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				switchPanels(activitiesPanel);
 				pressedBtn(btn_2);
 				ind_2.setOpaque(true);
 				unpressedBtn(new JPanel[]{btn_1,btn_3,btn_4,btn_5}, new JPanel[]{ind_1,ind_3,ind_4,ind_5});
@@ -155,6 +165,7 @@ public class frmMain extends JFrame {
 		btn_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				switchPanels(risksPanel);
 				pressedBtn(btn_3);
 				ind_3.setOpaque(true);
 				unpressedBtn(new JPanel[]{btn_1,btn_2,btn_4,btn_5}, new JPanel[]{ind_1,ind_2,ind_4,ind_5});
@@ -180,6 +191,7 @@ public class frmMain extends JFrame {
 		btn_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				switchPanels(employeesPanel);
 				pressedBtn(btn_4);
 				ind_4.setOpaque(true);
 				unpressedBtn(new JPanel[] {btn_1,btn_2,btn_3,btn_5}, new JPanel[]{ind_1,ind_2,ind_3,ind_5});
@@ -205,6 +217,7 @@ public class frmMain extends JFrame {
 		btn_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				switchPanels(scenariosPanel);
 				pressedBtn(btn_5);
 				ind_5.setOpaque(true);
 				unpressedBtn(new JPanel[] {btn_1,btn_2,btn_3,btn_4}, new JPanel[]{ind_1,ind_2,ind_3,ind_4});
@@ -224,6 +237,53 @@ public class frmMain extends JFrame {
 		lblbtn_5.setFont(new Font("Roboto", Font.PLAIN, 14));
 		lblbtn_5.setBounds(44, 20, 85, 15);
 		btn_5.add(lblbtn_5);
+		
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(150, 0, 850, 600);
+		contentPane.add(layeredPane);
+		layeredPane.setLayout(new CardLayout(0, 0));
+		
+		projectsPanel = new JPanel();
+		layeredPane.add(projectsPanel, "name_3191288904014");
+		projectsPanel.setLayout(null);
+		
+		JLabel lblProjects = new JLabel("PROJECTS");
+		lblProjects.setBounds(85, 70, 71, 14);
+		projectsPanel.add(lblProjects);
+		
+		activitiesPanel = new JPanel();
+		layeredPane.add(activitiesPanel, "name_3216371395926");
+		activitiesPanel.setLayout(null);
+		
+		JLabel lblActivities = new JLabel("ACTIVITIES");
+		lblActivities.setBounds(83, 112, 100, 14);
+		activitiesPanel.add(lblActivities);
+		
+		risksPanel = new JPanel();
+		layeredPane.add(risksPanel, "name_3219603263281");
+		risksPanel.setLayout(null);
+		
+		JLabel lblRisks = new JLabel("RISKS");
+		lblRisks.setBounds(105, 104, 46, 14);
+		risksPanel.add(lblRisks);
+		
+		employeesPanel = new JPanel();
+		layeredPane.add(employeesPanel, "name_3221706195412");
+		employeesPanel.setLayout(null);
+		
+		JLabel lblEmployees = new JLabel("EMPLOYEES");
+		lblEmployees.setBounds(132, 115, 102, 14);
+		employeesPanel.add(lblEmployees);
+		
+		scenariosPanel = new JPanel();
+		layeredPane.add(scenariosPanel, "name_3224266333301");
+		scenariosPanel.setLayout(null);
+		
+		JLabel lblScenarios = new JLabel("SCENARIOS");
+		lblScenarios.setBounds(127, 114, 72, 14);
+		scenariosPanel.add(lblScenarios);
+		
+		
 		setLocationRelativeTo(null);
 		con = DbConnect.dbconnect();
 	}
@@ -245,6 +305,10 @@ public class frmMain extends JFrame {
 		
 	}
 	
-	
-
+	private void switchPanels(JPanel panel) {
+		layeredPane.removeAll();
+		layeredPane.add(panel);
+		layeredPane.repaint();
+		layeredPane.revalidate();
+	}
 }
