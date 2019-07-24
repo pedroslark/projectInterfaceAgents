@@ -34,6 +34,7 @@ public class frmMain extends JFrame {
 	PreparedStatement pst = null;
 	ResultSet rs = null;
 	
+	
 	private JPanel contentPane;
 	private JPanel scenariosPanel;
 	private JPanel employeesPanel;
@@ -88,9 +89,9 @@ public class frmMain extends JFrame {
 		contentPane.add(sideMenu);
 		sideMenu.setLayout(null);
 		
-				
+		
 		//Sidemenu Buttons
-		JPanel btn_1 = new JPanel();
+		JPanel btn_1 = new JPanel();		
 		JPanel btn_2 = new JPanel();
 		JPanel btn_3 = new JPanel();
 		JPanel btn_4 = new JPanel();
@@ -98,7 +99,6 @@ public class frmMain extends JFrame {
 		
 		//Indicators
 		JPanel ind_1 = new JPanel();
-		ind_1.setOpaque(false);
 		JPanel ind_2 = new JPanel();
 		ind_2.setOpaque(false);
 		JPanel ind_3 = new JPanel();
@@ -107,7 +107,7 @@ public class frmMain extends JFrame {
 		ind_4.setOpaque(false);
 		JPanel ind_5 = new JPanel();
 		ind_5.setOpaque(false);
-		
+
 		
 		//Button 1
 		btn_1.addMouseListener(new MouseAdapter() {
@@ -119,7 +119,7 @@ public class frmMain extends JFrame {
 				unpressedBtn(new JPanel[]{btn_2,btn_3,btn_4,btn_5}, new JPanel[]{ind_2,ind_3,ind_4,ind_5});
 			}
 		});
-		btn_1.setBackground(new Color(47, 39, 76));
+		btn_1.setBackground(new Color(146, 115, 195));
 		btn_1.setBounds(0, 150, 150, 50);
 		sideMenu.add(btn_1);
 		btn_1.setLayout(null);
