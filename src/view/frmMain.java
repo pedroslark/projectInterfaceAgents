@@ -370,6 +370,28 @@ public class frmMain extends JFrame {
 		txtProjectCostBudget.setBounds(30, 344, 290, 25);
 		projectsLeft.add(txtProjectCostBudget);
 		
+		JPanel btnProjectCreate = new JPanel();
+		btnProjectCreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnProjectCreate.setBackground(new Color(33, 27, 56));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnProjectCreate.setBackground(new Color(47, 39, 76));
+			}
+		});
+		btnProjectCreate.setLayout(null);
+		btnProjectCreate.setBackground(new Color(47, 39, 76));
+		btnProjectCreate.setBounds(104, 470, 140, 50);
+		projectsLeft.add(btnProjectCreate);
+		
+		JLabel lblProjectCreate = new JLabel("Create");
+		lblProjectCreate.setForeground(Color.WHITE);
+		lblProjectCreate.setFont(new Font("Roboto", Font.PLAIN, 18));
+		lblProjectCreate.setBounds(43, 18, 54, 15);
+		btnProjectCreate.add(lblProjectCreate);
+		
 		JPanel projectsRight = new JPanel();
 		projectsRight.setBackground(new Color(255, 255, 255));
 		projectsRight.setBounds(350, 50, 500, 550);
@@ -453,6 +475,28 @@ public class frmMain extends JFrame {
 		txtActivityRelatedProject.setColumns(10);
 		txtActivityRelatedProject.setBounds(30, 283, 290, 25);
 		activitiesLeft.add(txtActivityRelatedProject);
+		
+		JPanel btnActivityCreate = new JPanel();
+		btnActivityCreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnActivityCreate.setBackground(new Color(33, 27, 56));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnActivityCreate.setBackground(new Color(47, 39, 76));
+			}
+		});
+		btnActivityCreate.setLayout(null);
+		btnActivityCreate.setBackground(new Color(47, 39, 76));
+		btnActivityCreate.setBounds(104, 470, 140, 50);
+		activitiesLeft.add(btnActivityCreate);
+		
+		JLabel lblActivityCreate = new JLabel("Create");
+		lblActivityCreate.setForeground(Color.WHITE);
+		lblActivityCreate.setFont(new Font("Roboto", Font.PLAIN, 18));
+		lblActivityCreate.setBounds(43, 18, 54, 15);
+		btnActivityCreate.add(lblActivityCreate);
 		
 		JPanel activitiesRight = new JPanel();
 		activitiesRight.setBackground(Color.WHITE);
@@ -579,16 +623,26 @@ public class frmMain extends JFrame {
 		risksLeft.add(textField_7);
 		
 		JPanel btnRiskCreate = new JPanel();
+		btnRiskCreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnRiskCreate.setBackground(new Color(33, 27, 56));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnRiskCreate.setBackground(new Color(47, 39, 76));
+			}
+		});
 		btnRiskCreate.setBackground(new Color(47, 39, 76));
 		btnRiskCreate.setBounds(104, 470, 140, 50);
 		risksLeft.add(btnRiskCreate);
 		btnRiskCreate.setLayout(null);
 		
-		JLabel lblCreate = new JLabel("Create");
-		lblCreate.setForeground(Color.WHITE);
-		lblCreate.setFont(new Font("Roboto", Font.PLAIN, 18));
-		lblCreate.setBounds(43, 18, 54, 15);
-		btnRiskCreate.add(lblCreate);
+		JLabel lblRiskCreate = new JLabel("Create");
+		lblRiskCreate.setForeground(Color.WHITE);
+		lblRiskCreate.setFont(new Font("Roboto", Font.PLAIN, 18));
+		lblRiskCreate.setBounds(43, 18, 54, 15);
+		btnRiskCreate.add(lblRiskCreate);
 		
 		JPanel risksRight = new JPanel();
 		risksRight.setBackground(Color.WHITE);
@@ -673,6 +727,28 @@ public class frmMain extends JFrame {
 		dropEmployeeQualified.setBounds(30, 222, 290, 25);
 		employeesLeft.add(dropEmployeeQualified);
 		
+		JPanel btnEmployeeCreate = new JPanel();
+		btnEmployeeCreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnEmployeeCreate.setBackground(new Color(33, 27, 56));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnEmployeeCreate.setBackground(new Color(47, 39, 76));
+			}
+		});
+		btnEmployeeCreate.setLayout(null);
+		btnEmployeeCreate.setBackground(new Color(47, 39, 76));
+		btnEmployeeCreate.setBounds(104, 470, 140, 50);
+		employeesLeft.add(btnEmployeeCreate);
+		
+		JLabel lblEmployeeCreate = new JLabel("Create");
+		lblEmployeeCreate.setForeground(Color.WHITE);
+		lblEmployeeCreate.setFont(new Font("Roboto", Font.PLAIN, 18));
+		lblEmployeeCreate.setBounds(43, 18, 54, 15);
+		btnEmployeeCreate.add(lblEmployeeCreate);
+		
 		JPanel employeesRight = new JPanel();
 		employeesRight.setBackground(Color.WHITE);
 		employeesRight.setBounds(350, 50, 500, 550);
@@ -730,6 +806,28 @@ public class frmMain extends JFrame {
 		textField_1.setColumns(10);
 		textField_1.setBounds(30, 161, 290, 25);
 		scenariosLeft.add(textField_1);
+		
+		JPanel btnScenarioCreate = new JPanel();
+		btnScenarioCreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnScenarioCreate.setBackground(new Color(33, 27, 56));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnScenarioCreate.setBackground(new Color(47, 39, 76));
+			}
+		});
+		btnScenarioCreate.setLayout(null);
+		btnScenarioCreate.setBackground(new Color(47, 39, 76));
+		btnScenarioCreate.setBounds(104, 470, 140, 50);
+		scenariosLeft.add(btnScenarioCreate);
+		
+		JLabel lblScenarioCreate = new JLabel("Create");
+		lblScenarioCreate.setForeground(Color.WHITE);
+		lblScenarioCreate.setFont(new Font("Roboto", Font.PLAIN, 18));
+		lblScenarioCreate.setBounds(43, 18, 54, 15);
+		btnScenarioCreate.add(lblScenarioCreate);
 		
 		JPanel scenariosRight = new JPanel();
 		scenariosRight.setBackground(Color.WHITE);
