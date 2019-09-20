@@ -50,11 +50,11 @@ public class frmMain extends JFrame {
 	private JTextField txtActivityLabel;
 	private JTextField txtRiskName;
 	private JTextField txtRiskCostProbability;
-	private JTextField txtRiskTimePobability;
+	private JTextField txtRiskTimeProbability;
 	private JTextField txtRiskCostImpact;
 	private JTextField txtRiskTotalRiskExposure;
 	private JTextField txtRiskTimeImpact;
-	private JTextField textField_7;
+	private JTextField txtRiskProjectId;
 	private JTextField txtActivityEstimatedTime;
 	private JTextField txtActivityEstimatedCost;
 	private JTextField txtActivityRelatedProject;
@@ -492,6 +492,11 @@ public class frmMain extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				btnActivityCreate.setBackground(new Color(47, 39, 76));
 			}
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				createActivity();
+			}		
+			
 		});
 		btnActivityCreate.setLayout(null);
 		btnActivityCreate.setBackground(new Color(47, 39, 76));
@@ -569,12 +574,12 @@ public class frmMain extends JFrame {
 		lblRiskTimeProbability.setBounds(30, 197, 150, 20);
 		risksLeft.add(lblRiskTimeProbability);
 		
-		txtRiskTimePobability = new JTextField();
-		txtRiskTimePobability.setForeground(new Color(47, 39, 76));
-		txtRiskTimePobability.setFont(new Font("Roboto", Font.PLAIN, 12));
-		txtRiskTimePobability.setColumns(10);
-		txtRiskTimePobability.setBounds(30, 222, 290, 25);
-		risksLeft.add(txtRiskTimePobability);
+		txtRiskTimeProbability = new JTextField();
+		txtRiskTimeProbability.setForeground(new Color(47, 39, 76));
+		txtRiskTimeProbability.setFont(new Font("Roboto", Font.PLAIN, 12));
+		txtRiskTimeProbability.setColumns(10);
+		txtRiskTimeProbability.setBounds(30, 222, 290, 25);
+		risksLeft.add(txtRiskTimeProbability);
 		
 		JLabel lblRiskCostImpact = new JLabel("Cost Impact");
 		lblRiskCostImpact.setForeground(Color.WHITE);
@@ -621,12 +626,12 @@ public class frmMain extends JFrame {
 		lblRiskRelatedProject.setBounds(30, 380, 150, 20);
 		risksLeft.add(lblRiskRelatedProject);
 		
-		textField_7 = new JTextField();
-		textField_7.setForeground(new Color(47, 39, 76));
-		textField_7.setFont(new Font("Roboto", Font.PLAIN, 12));
-		textField_7.setColumns(10);
-		textField_7.setBounds(30, 405, 290, 25);
-		risksLeft.add(textField_7);
+		txtRiskProjectId = new JTextField();
+		txtRiskProjectId.setForeground(new Color(47, 39, 76));
+		txtRiskProjectId.setFont(new Font("Roboto", Font.PLAIN, 12));
+		txtRiskProjectId.setColumns(10);
+		txtRiskProjectId.setBounds(30, 405, 290, 25);
+		risksLeft.add(txtRiskProjectId);
 		
 		JPanel btnRiskCreate = new JPanel();
 		btnRiskCreate.addMouseListener(new MouseAdapter() {
@@ -637,6 +642,10 @@ public class frmMain extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				btnRiskCreate.setBackground(new Color(47, 39, 76));
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				createRisk();
 			}
 		});
 		btnRiskCreate.setBackground(new Color(47, 39, 76));
@@ -869,6 +878,7 @@ public class frmMain extends JFrame {
 		layeredPane.revalidate();
 	}
 	
+	//new project
 	public void createProject() {
 		
 		String sql = "Insert into projects(name,duration,budget,timecontingencybudget,costcontingencybudget) values(?,?,?,?,?)";
@@ -887,4 +897,48 @@ public class frmMain extends JFrame {
 			JOptionPane.showMessageDialog(null, error);
 		}
 	}
+	
+	
+	//new activity
+	public void createActivity() {
+		
+		String sql = "Insert into activities(label,estimatedtime,estimatedcost,projectid) values(?,?,?,?)";
+		
+		try {
+			pst = connect.prepareStatement(sql);
+			pst.setString(1, txtActivityLabel.getText());
+			pst.setInt(2, Integer.parseInt(txtActivityEstimatedTime.getText()));
+			pst.setDouble(3, Double.parseDouble(txtActivityEstimatedCost.getText()));
+			pst.setInt(4, Integer.parseInt(txtActivityRelatedProject.getText()));
+			
+			pst.execute();
+		}
+		catch (SQLException error) {
+			JOptionPane.showMessageDialog(null, error);
+		}
+	}
+	
+	
+	//new risk
+		public void createRisk() {
+			
+			String sql = "Insert into risks(name,costprobability,timeprobability,costimpact,timeimpact,totalriskexposure,projectid) values(?,?,?,?,?,?,?)";
+			
+			try {
+				pst = connect.prepareStatement(sql);
+				pst.setString(1, txtRiskName.getText());
+				pst.setDouble(2, Double.parseDouble(txtRiskCostProbability.getText()));
+				pst.setDouble(3, Double.parseDouble(txtRiskTimeProbability.getText()));
+				pst.setInt(4, Integer.parseInt(txtRiskCostImpact.getText()));
+				pst.setInt(5, Integer.parseInt(txtRiskTimeImpact.getText()));
+				pst.setDouble(6, Double.parseDouble(txtRiskTotalRiskExposure.getText()));
+				pst.setInt(7, Integer.parseInt(txtRiskProjectId.getText()));
+				
+				pst.execute();
+			}
+			catch (SQLException error) {
+				JOptionPane.showMessageDialog(null, error);
+			}
+		}
+	
 }
